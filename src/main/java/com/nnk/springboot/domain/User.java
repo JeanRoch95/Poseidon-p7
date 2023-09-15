@@ -1,7 +1,11 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "users")
@@ -9,12 +13,18 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
     @NotBlank(message = "Username is mandatory")
     private String username;
-    @NotBlank(message = "Password is mandatory")
+
+    @NotBlank(message = "Le mot de passe est obligatoire.")
+    @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères.")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).+$", message = "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.")
     private String password;
+
     @NotBlank(message = "FullName is mandatory")
     private String fullname;
+
     @NotBlank(message = "Role is mandatory")
     private String role;
 
