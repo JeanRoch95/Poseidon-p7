@@ -7,7 +7,17 @@
 <body>
 <h3> HOME PAGE </h3>
 <p>
-    <a href="/login">Login</a> or create one <a href="/user/list">User management</a>
+    <a href="/login" data-role="USER">Login</a> or create one <a href="/user/list" data-role="ADMIN">User management</a>
 </p>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('a[data-role]').forEach(function(element) {
+            element.addEventListener('click', function(e) {
+                document.cookie = "loginFor=" + e.target.getAttribute('data-role') + ";path=/";
+            });
+        });
+    });
+
+</script>
 </body>
 </html>
