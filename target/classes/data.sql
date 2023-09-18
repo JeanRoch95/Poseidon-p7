@@ -1,5 +1,7 @@
 insert into users(id, fullname, username, password, role)
-values(1, "Administrator", "admin", "$2a$12$elHC5dQFY88eVuOmgUlmmuQ2cVx6B7cj3e011WUYeC9phSPyYKBje", "ADMIN");
+values(1, "Administrator", "admin", "$2a$12$elHC5dQFY88eVuOmgUlmmuQ2cVx6B7cj3e011WUYeC9phSPyYKBje", "ADMIN"),
+values(2, "User", "user", "$2a$12$elHC5dQFY88eVuOmgUlmmuQ2cVx6B7cj3e011WUYeC9phSPyYKBje", "USER");
+
 
 INSERT INTO curvepoint (curve_id, as_of_date, term, value, creation_date)
 VALUES (1, '2023-05-19 12:00:00', 1.5, 0.025, '2023-05-19 12:00:00'),

@@ -30,22 +30,47 @@ public class SpringSecurityConfig {
     @Autowired
     UserDetailsService service;
 
-
+    /**
+     * Configuring password encryption.
+     *
+     * @return a BCryptPasswordEncoder for password encryption
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Custom Access Denied Handler.
+     *
+     * @return a CustomAccessDenied as access denied handler
+     */
     @Bean
     public AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDenied();
     }
 
+    /**
+     * Custom authentication success handler.
+     *
+     * @return a CustomAuthenticationSuccessHandler as authentication success handler
+     */
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler(){
         return new CustomAuthenticationSuccessHandler();
     }
 
+    /**
+     * Configures the security filter chain for the application.
+     * <p>
+     * This method customizes the HttpSecurity object, specifying authorization and authentication
+     * rules, form login, and various other security settings.
+     * </p>
+     *
+     * @param http the HttpSecurity object to be configured
+     * @return the configured SecurityFilterChain
+     * @throws Exception if any error occurs during configuration
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
